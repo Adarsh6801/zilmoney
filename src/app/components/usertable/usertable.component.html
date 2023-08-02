@@ -1,0 +1,40 @@
+<div class="container mt-5">
+  <table class="table">
+    <thead>
+      <tr>
+        <th class="head">Name</th>
+        <th class="head">CompanyName </th>
+        <th class="head">Designation</th>
+      </tr>
+      <tr>
+        <th >
+          <span class="p-input-icon-left">
+          <i class="pi pi-search"></i>
+          <input type="text" pInputText [(ngModel)]="nameSearch" />
+      </span>
+    </th>
+    <th >
+      <span class="p-input-icon-left">
+      <i class="pi pi-search"></i>
+      <input type="text" pInputText [(ngModel)]="companyNameSearch" />
+  </span>
+</th>
+<th >
+  <span class="p-input-icon-left">
+  <i class="pi pi-search"></i>
+  <input type="text" pInputText [(ngModel)]="designationSearch" />
+</span>
+</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- applying the search pipe at here -->
+      <tr *ngFor="let userData of userData | userSearch : nameSearch : companyNameSearch : designationSearch">
+        <th scope="row" [ngStyle]="{'background-color':userData.company.designation==='angular Developer'?'#7ef759':''}">{{userData.name}}</th>
+        <td [ngStyle]="{'background-color':userData.company.designation==='angular Developer'?'#7ef759':''}">{{userData.company.name}}</td>
+        <td [ngStyle]="{'background-color':userData.company.designation==='angular Developer'?'#7ef759':''}">{{userData.company.designation}}</td>
+
+      </tr>
+    </tbody>
+  </table>
+</div>
